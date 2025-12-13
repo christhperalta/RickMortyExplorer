@@ -11,6 +11,29 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/characters" />
+            <option value="$PROJECT_DIR$/characters/api" />
+            <option value="$PROJECT_DIR$/characters/impl" />
+            <option value="$PROJECT_DIR$/collection" />
+            <option value="$PROJECT_DIR$/collection/api" />
+            <option value="$PROJECT_DIR$/collection/impl" />
+            <option value="$PROJECT_DIR$/episodes" />
+            <option value="$PROJECT_DIR$/episodes/api" />
+            <option value="$PROJECT_DIR$/episodes/impl" />
+            <option value="$PROJECT_DIR$/home" />
+            <option value="$PROJECT_DIR$/home/api" />
+            <option value="$PROJECT_DIR$/home/impl" />
+            <option value="$PROJECT_DIR$/missions" />
+            <option value="$PROJECT_DIR$/missions/api" />
+            <option value="$PROJECT_DIR$/missions/impl" />
+            <option value="$PROJECT_DIR$/planets" />
+            <option value="$PROJECT_DIR$/planets/api" />
+            <option value="$PROJECT_DIR$/planets/impl" />
+            <option value="$PROJECT_DIR$/profile" />
+            <option value="$PROJECT_DIR$/profile/api" />
+            <option value="$PROJECT_DIR$/profile/impl" />
+            <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/ui/ui" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -4,13 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
+import com.christhperalta.api.Home
+import com.christhperalta.impl.characterDetailsEntry
+import com.christhperalta.impl.charactersListEntry
+import com.christhperalta.impl.collectionEntry
+import com.christhperalta.impl.episodesEntry
+import com.christhperalta.impl.homeEntry
+import com.christhperalta.impl.missionsEntry
+import com.christhperalta.impl.planetsEntry
 import com.christhperalta.rickmortyexplorer.ui.theme.RickMortyExplorerTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +23,31 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RickMortyExplorerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+
+                val backStack = rememberNavBackStack(Home)
+
+                NavDisplay(
+                    backStack = backStack,
+                    onBack = { backStack.removeLastOrNull() },
+                    entryProvider = entryProvider {
+                        homeEntry(backStack)
+                        charactersListEntry(backStack)
+                        characterDetailsEntry()
+                        episodesEntry()
+                        planetsEntry()
+                        missionsEntry()
+                        collectionEntry()
+                    }
+
+                )
+
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RickMortyExplorerTheme {
-        Greeting("Android")
-    }
-}
+
+
+
+

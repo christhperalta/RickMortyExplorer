@@ -21,3 +21,19 @@ dependencyResolutionManagement {
 
 rootProject.name = "Rick & Morty Explorer"
 include(":app")
+
+include(":home:api")
+include(":home:impl")
+include(":ui:ui")
+include(":characters:api")
+include(":characters:impl")
+include(":episodes:api")
+include(":episodes:impl")
+include(":planets:api")
+include(":planets:impl")
+include(":missions:api")
+include(":missions:impl")
+include(":collection:api")
+include(":collection:impl")
+include(":profile:api")
+include(":profile:impl")
