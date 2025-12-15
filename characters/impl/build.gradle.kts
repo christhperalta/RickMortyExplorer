@@ -52,10 +52,13 @@ dependencies {
     implementation(project(":characters:api"))
     implementation(project(":characters:domain"))
     implementation(project(":characters:data"))
+    implementation(project(":ui:ui"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -74,11 +77,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     // Hilt
-    implementation ("com.google.dagger:hilt-android:2.57.1")
+    implementation (libs.hilt.android.v2571)
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
 
-    implementation(libs.retrofit)
-    implementation(libs.kotlinx.serialization.core)
-
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }

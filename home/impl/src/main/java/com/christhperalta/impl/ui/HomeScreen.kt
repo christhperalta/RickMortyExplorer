@@ -36,7 +36,7 @@ fun HomeScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            CustomTopAppBar(onClick = onProfileClicked)
+            CustomTopAppBar(title = "Rick & Morty Explorer",accionButton = true,onClick = onProfileClicked)
         }
     ) { innerPadding ->
         Column(

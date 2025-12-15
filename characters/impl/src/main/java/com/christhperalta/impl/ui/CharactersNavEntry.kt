@@ -11,7 +11,8 @@ import com.christhperalta.impl.ui.character_details.CharacterDetailsScreen
 fun EntryProviderScope<NavKey>.charactersListEntry(backStack: NavBackStack<NavKey>) {
     entry<CharactersList> {
         CharactersListScreen(
-            onCharacterDetailsClicked = { characterId -> backStack.add(CharacterDetails(characterId)) }
+            onCharacterDetailsClicked = { characterId -> backStack.add(CharacterDetails(characterId)) },
+            onBack = { backStack.removeLastOrNull() }
         )
     }
 }

@@ -17,22 +17,38 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun CustomTopAppBar(
     modifier: Modifier = Modifier,
-    onClick : () -> Unit
+    title : String ,
+    accionButton : Boolean,
+    onClick : () -> Unit,
 
 ) {
     TopAppBar(
         modifier = modifier,
-        title = {},
-        actions = {
-            IconButton(onClick = onClick) {
-                Icon(
-                    painter = painterResource(R.drawable.account),
-                    contentDescription = null,
+        title = {CustomText(text = title, style = MaterialTheme.typography.titleLarge)},
+        navigationIcon = {
+            if(!accionButton){
+                IconButton(onClick = onClick) {
+                    Icon(
+                        painter = painterResource(R.drawable.arrow_back),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.secondary
 
-                    tint = MaterialTheme.colorScheme.secondary
-
-                )
+                    )
+                }
             }
+        },
+        actions = {
+           if (accionButton){
+               IconButton(onClick = onClick) {
+                   Icon(
+                       painter = painterResource(R.drawable.account),
+                       contentDescription = null,
+
+                       tint = MaterialTheme.colorScheme.secondary
+
+                   )
+               }
+           }
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.background
@@ -40,9 +56,9 @@ fun CustomTopAppBar(
     )
 
 }
-
-@Preview(name = "CustomTopAppBar")
-@Composable
-private fun PreviewCustomTopAppBar() {
-    CustomTopAppBar(onClick = {})
-}
+//
+//@Preview(name = "CustomTopAppBar")
+//@Composable
+//private fun PreviewCustomTopAppBar() {
+//    CustomTopAppBar(onClick = {})
+//}
