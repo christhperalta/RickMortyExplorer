@@ -8,15 +8,19 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.christhperalta.api.Home
-import com.christhperalta.impl.characterDetailsEntry
-import com.christhperalta.impl.charactersListEntry
+import com.christhperalta.impl.ui.characterDetailsEntry
+import com.christhperalta.impl.ui.charactersListEntry
 import com.christhperalta.impl.collectionEntry
 import com.christhperalta.impl.episodesEntry
 import com.christhperalta.impl.homeEntry
 import com.christhperalta.impl.missionsEntry
 import com.christhperalta.impl.planetsEntry
+import com.christhperalta.impl.profileEntry
 import com.christhperalta.rickmortyexplorer.ui.theme.RickMortyExplorerTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,7 @@ class MainActivity : ComponentActivity() {
                         planetsEntry()
                         missionsEntry()
                         collectionEntry()
+                        profileEntry()
                     }
 
                 )
@@ -45,6 +50,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 
 
 

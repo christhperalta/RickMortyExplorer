@@ -52,7 +52,9 @@ dependencies {
     implementation(project(":planets:api"))
     implementation(project(":missions:api"))
     implementation(project(":collection:api"))
+    implementation(project(":profile:api"))
     implementation(project(":ui:ui"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

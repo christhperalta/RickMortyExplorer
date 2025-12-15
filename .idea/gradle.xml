@@ -13,10 +13,14 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/characters" />
             <option value="$PROJECT_DIR$/characters/api" />
+            <option value="$PROJECT_DIR$/characters/data" />
+            <option value="$PROJECT_DIR$/characters/domain" />
             <option value="$PROJECT_DIR$/characters/impl" />
             <option value="$PROJECT_DIR$/collection" />
             <option value="$PROJECT_DIR$/collection/api" />
             <option value="$PROJECT_DIR$/collection/impl" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/episodes" />
             <option value="$PROJECT_DIR$/episodes/api" />
             <option value="$PROJECT_DIR$/episodes/impl" />

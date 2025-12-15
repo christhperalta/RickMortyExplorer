@@ -9,6 +9,7 @@ import com.christhperalta.api.Episodes
 import com.christhperalta.api.Home
 import com.christhperalta.api.Missions
 import com.christhperalta.api.Planets
+import com.christhperalta.api.Profile
 import com.christhperalta.impl.ui.HomeScreen
 
  fun EntryProviderScope<NavKey>.homeEntry(backStack: NavBackStack<NavKey>) {
@@ -18,7 +19,8 @@ import com.christhperalta.impl.ui.HomeScreen
             onEpisodesClicked = {backStack.add(Episodes)},
             onPlanetsClicked = {backStack.add(Planets)},
             onMissionsClicked = {backStack.add(Missions)},
-            onCollectionClicked = {backStack.add(Collection)}
+            onCollectionClicked = {backStack.add(Collection)},
+            onProfileClicked = {backStack.add(Profile)}
 
         )
     }

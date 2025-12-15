@@ -10,6 +10,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -37,3 +38,7 @@ include(":collection:api")
 include(":collection:impl")
 include(":profile:api")
 include(":profile:impl")
+
+include(":core:network")
+include(":characters:data")
+include(":characters:domain")
