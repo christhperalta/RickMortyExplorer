@@ -1,5 +1,6 @@
 package com.christhperalta.impl.ui.character_details
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -23,12 +25,16 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
+import com.christhperalta.ui.CustomButton
 import com.christhperalta.ui.CustomCard
 import com.christhperalta.ui.CustomText
 import com.christhperalta.ui.CustomTopAppBar
@@ -52,6 +59,8 @@ fun CharacterDetailsScreen(
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    var showMore by remember { mutableStateOf(false) }
+
 
 
     LaunchedEffect({}) {
@@ -177,16 +186,19 @@ fun CharacterDetailsScreen(
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant
                     ),
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+                    modifier = Modifier
+                        .then(if (showMore) Modifier else Modifier.height(250.dp))
+                        .animateContentSize()
                 ) {
                     Column(
-                        modifier = Modifier.padding(vertical = 20.dp, horizontal = 16.dp),
-
-                        ) {
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(vertical = 20.dp, horizontal = 16.dp)
+                    ) {
 
                         CustomText(text = "Episodes where this character appears:")
                         Spacer(modifier = Modifier.height(15.dp))
-
 
                         FlowRow(
                             horizontalArrangement = Arrangement.spacedBy(15.dp)
@@ -200,21 +212,41 @@ fun CharacterDetailsScreen(
                                 ) {
                                     CustomText(
                                         modifier = Modifier.padding(
-                                            vertical = 10.dp,
+                                            vertical = 8.dp,
                                             horizontal = 16.dp
                                         ),
-                                        text = episode.toString().substringAfter("api/")
+                                        text = episode.toString()
+                                            .substringAfter("api/")
                                             .replace("/", " ")
                                     )
                                 }
                             }
                         }
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+                        CustomButton(
+                            onClick = { showMore = !showMore },
+                            modifier = Modifier.align(Alignment.End).width(100.dp),
+                            contentPadding = PaddingValues(
+                                horizontal = 12.dp,
+                                vertical = 6.dp
+                            )
+                        ) {
+                            CustomText(
+                                text = if (showMore) "Show less" else "Show more",
+                                style = MaterialTheme.typography.labelMedium,
+                            )
+                        }
                     }
                 }
+
+
             }
-
         }
-
-
     }
 }
+
+
+
+
