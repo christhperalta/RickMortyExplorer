@@ -37,7 +37,7 @@ fun CustomCharacterCard(
 ) {
     Card(
         modifier = modifier
-            .height(300.dp)
+            .height(320.dp)
             .clickable(onClick = onCharacterClicked),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant

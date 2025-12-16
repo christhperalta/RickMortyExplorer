@@ -3,8 +3,6 @@ package com.christhperalta.impl.ui.character_details
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,10 +23,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -38,10 +34,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.ModifierLocal
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -188,31 +183,32 @@ fun CharacterDetailsScreen(
                     ),
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
                     modifier = Modifier
-                        .then(if (showMore) Modifier else Modifier.height(250.dp))
+                        .then(if (showMore) Modifier else Modifier.height(180.dp))
                         .animateContentSize()
                 ) {
                     Column(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(vertical = 20.dp, horizontal = 16.dp)
+                            .fillMaxWidth()
+                            .padding(top = 20.dp, bottom = 10.dp, start = 16.dp, end = 16.dp)
                     ) {
 
                         CustomText(text = "Episodes where this character appears:")
                         Spacer(modifier = Modifier.height(15.dp))
 
                         FlowRow(
-                            horizontalArrangement = Arrangement.spacedBy(15.dp)
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            maxLines = if (showMore) Int.MAX_VALUE else 2
                         ) {
                             uiState.characters?.episode?.forEach { episode ->
                                 Card(
                                     colors = CardDefaults.cardColors(
                                         containerColor = MaterialTheme.colorScheme.tertiaryContainer
                                     ),
-                                    modifier = Modifier.padding(bottom = 10.dp)
+                                    modifier = Modifier.padding(bottom = 8.dp)
                                 ) {
                                     CustomText(
                                         modifier = Modifier.padding(
-                                            vertical = 8.dp,
+                                            vertical = 4.dp,
                                             horizontal = 16.dp
                                         ),
                                         text = episode.toString()
@@ -222,15 +218,17 @@ fun CharacterDetailsScreen(
                                 }
                             }
                         }
-
                         Spacer(modifier = Modifier.weight(1f))
+
 
                         CustomButton(
                             onClick = { showMore = !showMore },
-                            modifier = Modifier.align(Alignment.End).width(100.dp),
+                            modifier = Modifier
+                                .align(Alignment.End)
+                                .width(100.dp),
                             contentPadding = PaddingValues(
                                 horizontal = 12.dp,
-                                vertical = 6.dp
+                                vertical = 8.dp
                             )
                         ) {
                             CustomText(

@@ -79,7 +79,7 @@ dependencies {
 
     // Hilt
     implementation (libs.hilt.android.v2571)
-    ksp("com.google.dagger:hilt-android-compiler:2.57.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.57.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
 
     implementation(libs.coil.compose)

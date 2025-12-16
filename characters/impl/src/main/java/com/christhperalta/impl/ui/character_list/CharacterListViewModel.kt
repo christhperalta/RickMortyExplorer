@@ -80,8 +80,40 @@ class CharacterListViewModel @Inject constructor(
                     val result = characterRepositoryImpl.addMoreCharacters(pageCounter)
                     _uiState.update { state ->
                         state.copy(
+                            characters = result + state.characters,
+                            allCharacters = result + state.characters,
+                            isRefreshing = false
+                        )
+                    }
+                } catch (e: Exception) {
+                    _uiState.update { state ->
+                        state.copy(
+                            errorMessage = e.message,
+                            isRefreshing = false
+                        )
+                    }
+                }
+            }
+
+        }
+    }
+
+    fun addMoreCharactersBottom() {
+        pageCounter++
+        _uiState.update { state ->
+            state.copy(isRefreshing = true)
+        }
+
+        if (pageCounter <= 42) {
+
+            viewModelScope.launch {
+
+                try {
+                    val result = characterRepositoryImpl.addMoreCharacters(pageCounter)
+                    _uiState.update { state ->
+                        state.copy(
                             characters = state.characters + result,
-                            allCharacters = state.allCharacters + result,
+                            allCharacters = state.characters + result,
                             isRefreshing = false
                         )
                     }
