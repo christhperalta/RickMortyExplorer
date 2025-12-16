@@ -1,7 +1,9 @@
 package com.christhperalta.data.mapper
 
 import com.christhperalta.domain.model.Character
+import com.christhperalta.domain.model.CharacterDetails
 import com.christhperalta.network.model.characterModel.CharacterDTO
+import com.christhperalta.network.model.characterModel.Result
 
 
 fun CharacterDTO.toModel() : List<Character>? {
@@ -11,10 +13,24 @@ fun CharacterDTO.toModel() : List<Character>? {
             name = it?.name ?: "",
             status = it?.status ?: "",
             species = it?.species ?: "",
-            gender = it?.gender ?: "",
             image = it?.image ?: "",
-            origin = it?.origin?.name ?: "",
-            location = it?.location?.name ?: ""
         )
     }
 }
+
+
+fun Result.toModel() = CharacterDetails(
+    id = id ?: 0,
+    name = name ?: "",
+    status = status ?: "",
+    species = species ?: "",
+    type = type ?: "",
+    gender = gender ?: "",
+    origin = origin?.name ?: "",
+    location = location?.name ?: "",
+    image = image ?: "",
+    episode = episode ?: emptyList(),
+    url = url ?: "",
+    created = created ?: ""
+
+)

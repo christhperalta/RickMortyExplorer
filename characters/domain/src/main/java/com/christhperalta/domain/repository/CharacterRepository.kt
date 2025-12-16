@@ -1,7 +1,9 @@
 package com.christhperalta.domain.repository
 
 import com.christhperalta.domain.model.Character
+import com.christhperalta.domain.model.CharacterDetails
 
 interface CharacterRepository {
     suspend fun getCharacters(): List<Character>
+    suspend fun getCharacter(id: Int): CharacterDetails
 }

@@ -8,8 +8,8 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.christhperalta.api.Home
-import com.christhperalta.impl.ui.characterDetailsEntry
-import com.christhperalta.impl.ui.charactersListEntry
+import com.christhperalta.impl.characterDetailsEntry
+import com.christhperalta.impl.charactersListEntry
 import com.christhperalta.impl.collectionEntry
 import com.christhperalta.impl.episodesEntry
 import com.christhperalta.impl.homeEntry
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     entryProvider = entryProvider {
                         homeEntry(backStack)
                         charactersListEntry(backStack)
-                        characterDetailsEntry()
+                        characterDetailsEntry(backStack)
                         episodesEntry()
                         planetsEntry()
                         missionsEntry()

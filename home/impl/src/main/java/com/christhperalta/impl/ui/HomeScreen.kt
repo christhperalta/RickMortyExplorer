@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.christhperalta.impl.R
 import com.christhperalta.ui.CustomButton
+import com.christhperalta.ui.CustomCard
 import com.christhperalta.ui.CustomText
 import com.christhperalta.ui.CustomTopAppBar
 import com.christhperalta.ui.Logo
@@ -36,7 +37,11 @@ fun HomeScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            CustomTopAppBar(title = "Rick & Morty Explorer",accionButton = true,onClick = onProfileClicked)
+            CustomTopAppBar(
+                title = "Rick & Morty Explorer",
+                accionButton = true,
+                onClick = onProfileClicked
+            )
         }
     ) { innerPadding ->
         Column(
@@ -50,7 +55,7 @@ fun HomeScreen(
 
             Logo()
             Spacer(modifier = Modifier.height(60.dp))
-            HomeCard(
+            CustomCard(
                 title = "Explorer"
             ) {
                 CustomButton(onClick = onCharacterClicked, modifier = Modifier.weight(1f)) {
@@ -64,7 +69,7 @@ fun HomeScreen(
                 }
             }
             Spacer(modifier = Modifier.height(30.dp))
-            HomeCard(
+            CustomCard(
                 title = "Missions"
             ) {
                 CustomButton(onClick = onMissionsClicked, modifier = Modifier.weight(1f)) {
@@ -73,7 +78,7 @@ fun HomeScreen(
             }
 
             Spacer(modifier = Modifier.height(30.dp))
-            HomeCard(
+            CustomCard(
                 title = "Collection"
             ) {
                 CustomButton(onClick = onCollectionClicked, modifier = Modifier.weight(1f)) {
@@ -85,29 +90,31 @@ fun HomeScreen(
     }
 }
 
-
-@Composable
-fun HomeCard(
-    title: String,
-    content: @Composable () -> Unit
-) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
-        ),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
-    ) {
-        Column(
-            modifier = Modifier.padding(vertical = 20.dp, horizontal = 16.dp)
-        ) {
-            CustomText(text = title, style = MaterialTheme.typography.headlineSmall)
-            Spacer(modifier = Modifier.height(15.dp))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(15.dp)
-            ) {
-                content()
-            }
-        }
-    }
-
-}
+//
+//@Composable
+//fun CustomCard(
+//    title: String? = null,
+//    content: @Composable () -> Unit
+//) {
+//    Card(
+//        colors = CardDefaults.cardColors(
+//            containerColor = MaterialTheme.colorScheme.surfaceVariant
+//        ),
+//        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
+//    ) {
+//        Column(
+//            modifier = Modifier.padding(vertical = 20.dp, horizontal = 16.dp)
+//        ) {
+//            if (title != null)
+//                CustomText(text = title, style = MaterialTheme.typography.titleLarge)
+//
+//            Spacer(modifier = Modifier.height(15.dp))
+//            FlowRow(
+//                horizontalArrangement = Arrangement.spacedBy(15.dp)
+//            ) {
+//                content()
+//            }
+//        }
+//    }
+//
+//}

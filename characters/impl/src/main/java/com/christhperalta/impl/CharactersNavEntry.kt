@@ -1,4 +1,4 @@
-package com.christhperalta.impl.ui
+package com.christhperalta.impl
 
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
@@ -17,8 +17,11 @@ fun EntryProviderScope<NavKey>.charactersListEntry(backStack: NavBackStack<NavKe
     }
 }
 
-fun EntryProviderScope<NavKey>.characterDetailsEntry() {
-    entry<CharacterDetails> {
-        CharacterDetailsScreen()
+fun EntryProviderScope<NavKey>.characterDetailsEntry(backStack: NavBackStack<NavKey>) {
+    entry<CharacterDetails> { key ->
+        CharacterDetailsScreen(
+            onBack = { backStack.removeLastOrNull() },
+            characterId = key.characterId
+        )
     }
 }
