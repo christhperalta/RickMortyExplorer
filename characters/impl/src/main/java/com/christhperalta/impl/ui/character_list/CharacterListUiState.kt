@@ -6,5 +6,6 @@ data class CharacterListUiState(
     val isLoading: Boolean = true,
     val characters: List<Character> = emptyList(),
     val allCharacters: List<Character> = emptyList(),
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
+    val isRefreshing: Boolean = false
 )

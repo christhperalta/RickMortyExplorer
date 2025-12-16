@@ -5,5 +5,6 @@ import com.christhperalta.domain.model.CharacterDetails
 
 interface CharacterRepository {
     suspend fun getCharacters(): List<Character>
+    suspend fun addMoreCharacters(pageNum: Int) : List<Character>
     suspend fun getCharacter(id: Int): CharacterDetails
 }

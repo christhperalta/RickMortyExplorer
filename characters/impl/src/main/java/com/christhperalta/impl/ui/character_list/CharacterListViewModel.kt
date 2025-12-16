@@ -17,7 +17,7 @@ class CharacterListViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(CharacterListUiState())
     val uiState: StateFlow<CharacterListUiState> = _uiState
-
+    var pageCounter = 1
 
     init {
         viewModelScope.launch {
@@ -26,7 +26,7 @@ class CharacterListViewModel @Inject constructor(
             }
             try {
                 val result = characterRepositoryImpl.getCharacters()
-                _uiState.update {state ->
+                _uiState.update { state ->
                     state.copy(
                         isLoading = false,
                         characters = result,
@@ -34,8 +34,8 @@ class CharacterListViewModel @Inject constructor(
                     )
                 }
 
-            }catch (e : Exception) {
-                _uiState.update {state ->
+            } catch (e: Exception) {
+                _uiState.update { state ->
                     state.copy(
                         isLoading = false,
                         errorMessage = e.message
@@ -62,10 +62,40 @@ class CharacterListViewModel @Inject constructor(
         }
     }
 
-
-
     fun updateStatusFilter(status: String) {
         applyFiltersAndSort(status)
+    }
+
+    fun addMoreCharacters() {
+        pageCounter++
+        _uiState.update { state ->
+            state.copy(isRefreshing = true)
+        }
+
+        if (pageCounter <= 42) {
+
+            viewModelScope.launch {
+
+                try {
+                    val result = characterRepositoryImpl.addMoreCharacters(pageCounter)
+                    _uiState.update { state ->
+                        state.copy(
+                            characters = state.characters + result,
+                            allCharacters = state.allCharacters + result,
+                            isRefreshing = false
+                        )
+                    }
+                } catch (e: Exception) {
+                    _uiState.update { state ->
+                        state.copy(
+                            errorMessage = e.message,
+                            isRefreshing = false
+                        )
+                    }
+                }
+            }
+
+        }
     }
 
     private fun getStatusOrder(status: String): Int {
@@ -77,7 +107,7 @@ class CharacterListViewModel @Inject constructor(
         }
     }
 
-    private fun applyFiltersAndSort(currentStatusFilter : String) {
+    private fun applyFiltersAndSort(currentStatusFilter: String) {
         _uiState.update { state ->
             var processedList = state.allCharacters
             val normalizedStatus = currentStatusFilter.trim().lowercase()
@@ -94,9 +124,6 @@ class CharacterListViewModel @Inject constructor(
             state.copy(characters = sortedList)
         }
     }
-
-
-
 
 
 }
