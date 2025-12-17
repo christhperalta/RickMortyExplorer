@@ -36,6 +36,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.christhperalta.ui.CustomText
 import com.christhperalta.ui.CustomTopAppBar
 import com.christhperalta.ui.R
+import com.christhperalta.ui.SimpleSearchBar
 
 @Composable
 fun EpisodesScreen(
@@ -51,7 +52,7 @@ fun EpisodesScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             Column {
-                CustomTopAppBar(title = "Episodes", accionButton = false, onClick = onBack)
+                CustomTopAppBar(title = "Planets", accionButton = false, onClick = onBack)
                 SimpleSearchBar(onSearchTextChange = viewModel::filterEpisodesName)
             }
         }
@@ -125,39 +126,3 @@ fun EpisodesScreen(
     }
 }
 
-
-@Composable
-fun SimpleSearchBar(
-    onSearchTextChange: (String) -> Unit
-) {
-    var searchText by remember { mutableStateOf("") }
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-
-        OutlinedTextField(
-            value = searchText,
-            onValueChange = { newText ->
-                searchText = newText
-                onSearchTextChange(newText)
-            },
-            placeholder = { CustomText(text = "Search character...") },
-            leadingIcon = {
-                Icon(
-                    painter = painterResource(R.drawable.search_24px),
-                    contentDescription = "Search"
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 8.dp),
-            singleLine = true,
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = MaterialTheme.colorScheme.secondary,
-                unfocusedBorderColor = MaterialTheme.colorScheme.secondary
-            )
-        )
-    }
-}

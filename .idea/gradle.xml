@@ -34,6 +34,8 @@
             <option value="$PROJECT_DIR$/missions/impl" />
             <option value="$PROJECT_DIR$/planets" />
             <option value="$PROJECT_DIR$/planets/api" />
+            <option value="$PROJECT_DIR$/planets/data" />
+            <option value="$PROJECT_DIR$/planets/domain" />
             <option value="$PROJECT_DIR$/planets/impl" />
             <option value="$PROJECT_DIR$/profile" />
             <option value="$PROJECT_DIR$/profile/api" />

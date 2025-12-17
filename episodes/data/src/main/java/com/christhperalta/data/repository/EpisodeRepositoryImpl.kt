@@ -1,6 +1,6 @@
 package com.christhperalta.data.repository
 
-import com.christhperalta.data.Mapper.toModel
+import com.christhperalta.data.mapper.toModel
 import com.christhperalta.domain.model.Episode
 import com.christhperalta.domain.repository.EpisodeRepository
 import com.christhperalta.network.dataproviders.EpisodeProvider

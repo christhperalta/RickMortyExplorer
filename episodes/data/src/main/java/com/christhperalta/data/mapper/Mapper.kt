@@ -1,4 +1,4 @@
-package com.christhperalta.data.Mapper
+package com.christhperalta.data.mapper
 
 import com.christhperalta.domain.model.Episode
 import com.christhperalta.network.model.episodeModel.EpisodeDTO
