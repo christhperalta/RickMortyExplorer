@@ -90,31 +90,4 @@ fun HomeScreen(
     }
 }
 
-//
-//@Composable
-//fun CustomCard(
-//    title: String? = null,
-//    content: @Composable () -> Unit
-//) {
-//    Card(
-//        colors = CardDefaults.cardColors(
-//            containerColor = MaterialTheme.colorScheme.surfaceVariant
-//        ),
-//        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
-//    ) {
-//        Column(
-//            modifier = Modifier.padding(vertical = 20.dp, horizontal = 16.dp)
-//        ) {
-//            if (title != null)
-//                CustomText(text = title, style = MaterialTheme.typography.titleLarge)
-//
-//            Spacer(modifier = Modifier.height(15.dp))
-//            FlowRow(
-//                horizontalArrangement = Arrangement.spacedBy(15.dp)
-//            ) {
-//                content()
-//            }
-//        }
-//    }
-//
-//}
+

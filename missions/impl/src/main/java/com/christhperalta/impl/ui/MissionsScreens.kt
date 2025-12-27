@@ -1,17 +1,23 @@
 package com.christhperalta.impl.ui
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.christhperalta.ui.CustomTopAppBar
 
 @Composable
-fun MissionsScreens(
-    modifier: Modifier = Modifier
-) {
-    Box(modifier) {
-        Text(text = "MissionsScreens")
+fun MissionsScreens() {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = { CustomTopAppBar(title = "Missions", accionButton = false) {} }
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+
+        }
     }
 }
 

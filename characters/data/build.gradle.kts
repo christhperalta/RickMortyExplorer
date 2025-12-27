@@ -45,6 +45,7 @@ android {
 dependencies {
     implementation(project(":characters:domain"))
     implementation(project(":core:network"))
+    implementation(project(":core:dataSource"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

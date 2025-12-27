@@ -4,6 +4,9 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -47,6 +50,9 @@ android {
 
 dependencies {
     implementation(project(":collection:api"))
+    implementation(project(":collection:domain"))
+    implementation(project(":collection:data"))
+    implementation(project(":ui:ui"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -67,4 +73,9 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Hilt
+    implementation (libs.hilt.android.v2571)
+    ksp("com.google.dagger:hilt-android-compiler:2.57.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
 }

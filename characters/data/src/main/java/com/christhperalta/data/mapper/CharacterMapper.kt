@@ -4,6 +4,7 @@ import com.christhperalta.domain.model.Character
 import com.christhperalta.domain.model.CharacterDetails
 import com.christhperalta.network.model.characterModel.CharacterDTO
 import com.christhperalta.network.model.characterModel.Result
+import com.example.datasource.entities.FavoriteCharacter
 
 
 fun CharacterDTO.toModel() : List<Character>? {
@@ -33,4 +34,13 @@ fun Result.toModel() = CharacterDetails(
     url = url ?: "",
     created = created ?: ""
 
+)
+
+
+fun Character.toFavoriteEntity() = FavoriteCharacter(
+    id = id,
+    name = name,
+    status = status,
+    species = species,
+    urlImage = image
 )

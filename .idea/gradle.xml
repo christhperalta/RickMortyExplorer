@@ -18,8 +18,11 @@
             <option value="$PROJECT_DIR$/characters/impl" />
             <option value="$PROJECT_DIR$/collection" />
             <option value="$PROJECT_DIR$/collection/api" />
+            <option value="$PROJECT_DIR$/collection/data" />
+            <option value="$PROJECT_DIR$/collection/domain" />
             <option value="$PROJECT_DIR$/collection/impl" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/dataSource" />
             <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/episodes" />
             <option value="$PROJECT_DIR$/episodes/api" />

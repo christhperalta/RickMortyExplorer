@@ -47,6 +47,7 @@ android {
 
 dependencies {
     implementation(project(":missions:api"))
+    implementation(project(":ui:ui"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
