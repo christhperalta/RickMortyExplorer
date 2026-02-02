@@ -25,11 +25,16 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,6 +49,7 @@ import com.christhperalta.ui.CustomButton
 import com.christhperalta.ui.CustomCard
 import com.christhperalta.ui.CustomText
 import com.christhperalta.ui.CustomTopAppBar
+import kotlinx.coroutines.launch
 
 @Composable
 fun CharacterDetailsScreen(
@@ -54,7 +60,8 @@ fun CharacterDetailsScreen(
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var showMore by remember { mutableStateOf(false) }
-
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
 
 
     LaunchedEffect({}) {
@@ -70,7 +77,10 @@ fun CharacterDetailsScreen(
                 accionButton = false,
                 onClick = onBack
             )
-        }
+
+
+        },
+        snackbarHost = {SnackbarHost(snackbarHostState)}
     ) { innerPadding ->
 
 
@@ -243,7 +253,20 @@ fun CharacterDetailsScreen(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Row{
-                    CustomButton(onClick = viewModel::addToFavoriteCollection, modifier = Modifier.weight(1f)){
+                    CustomButton(onClick = {
+                        scope.launch {
+                           val result = snackbarHostState.showSnackbar(
+                                "added to collection",
+                                withDismissAction = true,
+                                actionLabel = "Undo",
+                                duration = SnackbarDuration.Short
+                                )
+                            when (result) {
+                                SnackbarResult.ActionPerformed -> {}
+                                SnackbarResult.Dismissed -> viewModel.addToFavoriteCollection()
+                            }
+                        }
+                    }, modifier = Modifier.weight(1f)){
                         CustomText(text = "Add to collection")
                     }
                     Spacer(modifier = Modifier.width(20.dp))
