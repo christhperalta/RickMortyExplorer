@@ -39,8 +39,8 @@ class MainActivity : ComponentActivity() {
                         characterDetailsEntry(backStack)
                         episodesEntry(backStack)
                         planetsEntry(backStack)
-                        missionsEntry()
-                        collectionEntry()
+                        missionsEntry(backStack)
+                        collectionEntry(backStack)
                         profileEntry()
                     }
 

@@ -1,28 +1,34 @@
 package com.christhperalta.impl.ui
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.christhperalta.ui.CustomText
 import com.christhperalta.ui.CustomTopAppBar
 
 @Composable
-fun MissionsScreens() {
+fun MissionsScreens(
+    onBack: () -> Unit
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { CustomTopAppBar(title = "Missions", accionButton = false) {} }
+        topBar = { CustomTopAppBar(title = "Missions", accionButton = false) { onBack() } }
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
-
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            CustomText(text = "Coming Soon", style = MaterialTheme.typography.headlineMedium)
         }
     }
 }
 
-@Preview(name = "MissionsScreens")
-@Composable
-private fun PreviewMissionsScreens() {
-    MissionsScreens()
-}

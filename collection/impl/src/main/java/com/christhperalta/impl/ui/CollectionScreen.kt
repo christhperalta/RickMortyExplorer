@@ -26,7 +26,8 @@ import com.christhperalta.ui.CustomTopAppBar
 
 @Composable
 fun CollectionScreen(
-    viewModel: CollectionScreenViewModel = hiltViewModel()
+    viewModel: CollectionScreenViewModel = hiltViewModel(),
+    onBack : () -> Unit
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -36,7 +37,7 @@ fun CollectionScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             Column {
-                CustomTopAppBar(title = "Collection", accionButton = false){}
+                CustomTopAppBar(title = "Collection", accionButton = false){onBack()}
                 CustomSearchFilter(
                     onSearchTextChange = {},
                     onStatusChange = {}
@@ -89,9 +90,3 @@ fun CollectionScreen(
     }
 
 
-
-@Preview(name = "CollectionScreen")
-@Composable
-private fun PreviewCollectionScreen() {
-    CollectionScreen()
-}

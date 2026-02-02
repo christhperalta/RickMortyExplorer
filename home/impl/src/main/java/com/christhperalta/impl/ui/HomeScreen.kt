@@ -40,7 +40,7 @@ fun HomeScreen(
             CustomTopAppBar(
                 title = "Rick & Morty Explorer",
                 accionButton = true,
-                onClick = onProfileClicked
+                onClick = {}
             )
         }
     ) { innerPadding ->
