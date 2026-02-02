@@ -1,0 +1,40 @@
+package com.christhperalta.data.repository
+
+import com.christhperalta.data.mapper.toFavoriteEntity
+import com.christhperalta.data.mapper.toModel
+import com.christhperalta.domain.model.Character
+import com.christhperalta.domain.model.CharacterDetails
+import com.christhperalta.domain.repository.CharacterRepository
+import com.christhperalta.network.dataproviders.CharacterAddMoreProvider
+import com.christhperalta.network.dataproviders.CharacterDetailsProvider
+import com.christhperalta.network.dataproviders.CharacterProvider
+import com.example.datasource.dataProviders.AddFavoriteCharacterProvider
+import jakarta.inject.Inject
+
+class CharacterRepositoryImpl  @Inject constructor(
+    private val characterProvider: CharacterProvider,
+    private val characterDetailsProvider: CharacterDetailsProvider,
+    private val characterAddMoreProvider: CharacterAddMoreProvider,
+    private val addFavoriteCharacterProvider: AddFavoriteCharacterProvider
+) : CharacterRepository {
+    override suspend fun getCharacters(): List<Character> {
+        val result = characterProvider.getCharacters().toModel()
+        return result ?: emptyList()
+    }
+
+    override suspend fun addMoreCharacters(pageNum: Int): List<Character> {
+        val result = characterAddMoreProvider.addMoreCharacters(pageNum).toModel()
+        return result ?: emptyList()
+    }
+
+    override suspend fun getCharacter(id: Int): CharacterDetails {
+        val result = characterDetailsProvider.getCharacterById(id)
+        return result.toModel()
+
+    }
+
+    override suspend fun addFavoriteCharacter(favoriteCharacter: Character) {
+        addFavoriteCharacterProvider.addFavoriteCharacterProvider(favoriteCharacter.toFavoriteEntity())
+    }
+
+}
